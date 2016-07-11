@@ -144,11 +144,11 @@ angular.module('miniRouting').service('productService', function(){
 
 ###Step 5: Routing
 <!-- * Now that our ````<div ui-view></div>```` is set up, let's head over to app.js and actually prepare our router. -->
-* You have the code below but I want you to really try to not look at it until you've completed all of these next steps. I promise it's really not too tricky, just try your best and ask for help if you get stuck.
+<!-- * You have the code below but I want you to really try to not look at it until you've completed all of these next steps. I promise it's really not too tricky, just try your best and ask for help if you get stuck. -->
 
 <!-- * 1) add a config property onto your app variable that takes in a anonymous function as it's only argument. -->
 <!-- * 2) inject ```$stateProvider``` and ```$urlRouterProvider``` into that anonymous function you just built. -->
-* 3) Now we're going to set up our routes. Here is the criteria.
+<!-- * 3) Now we're going to set up our routes. Here is the criteria. -->
     <!-- - use the ```state``` method of ```$stateProvider``` to create a state called ```home``` that uses ```homeTmpl.html``` as the templateUrl, ```homeCtrl``` as the controller and ('/') as the url. -->
     <!-- - chain another invocation of ```state``` to create a state called ```settings``` that uses ```settingsTmpl.html``` as the templateUrl, ```settingsCtrl``` as the controller and ('/settings') as the url. -->
     <!-- - chain another invocation of ```state``` to create another state called ```products``` that uses ```productTmpl.html``` as the templateUrl, ```productsCtrl``` as the controller and ('/products/:id') as the url. Notice that 'products' has a ```/:id``` at the end of it. This is because we're going to tell our app which product the user is looking at based on which link they clicked. For example, if the user clicks on `<li><a ui-sref="products({id: 'shoes'})">Shoes</a>` then in our controller ```$stateParams.id``` (id correlating with the /:id from earlier) is going to be 'shoes'. This is a little bit tricky, ask for help if you need it. -->
@@ -181,8 +181,8 @@ angular.module('miniRouting', ['ui.router']).config(function ($stateProvider, $u
 });
 ```
 ###Step 6: Adding to Template
-* In order for us to know if our routes are working, we need to edit all of our templates to show some sort of confirmation that we're on a certain page. Make the following changes:
-* settingsTmpl.html should look like this
+<!-- * In order for us to know if our routes are working, we need to edit all of our templates to show some sort of confirmation that we're on a certain page. Make the following changes: -->
+<!-- * settingsTmpl.html should look like this -->
 ```html
 <h1> Settings Page </h1>
 <p> This is where the user would change their settings </p>
@@ -197,11 +197,11 @@ angular.module('miniRouting', ['ui.router']).config(function ($stateProvider, $u
 <h1> Product Page </h1>
 <div> We're going to use this div to loop over our data later on</div>
 ```
-* Test that everything is working by clicking on a few of the links to see if the templates change based on which link you clicked on. If it's not working, first check your console to see if there are any errors. Try to debug, if you debug for 5 minutes and are still stuck, ask for help.
+<!-- * Test that everything is working by clicking on a few of the links to see if the templates change based on which link you clicked on. If it's not working, first check your console to see if there are any errors. Try to debug, if you debug for 5 minutes and are still stuck, ask for help. -->
 * 
 
 ###Step 7: Fixing Product Pages
-* The last thing we have to do is show certain product data depending on which page the user is on. For example, if the user is on the shoes page, we want to show them the shoes data. If they're on the socks page, we want to show them the socks data. Remember that in our index.html page our menu looks like this: 
+<!-- * The last thing we have to do is show certain product data depending on which page the user is on. For example, if the user is on the shoes page, we want to show them the shoes data. If they're on the socks page, we want to show them the socks data. Remember that in our index.html page our menu looks like this:  -->
 ```html
     <div class="menu">
         <ul>
@@ -217,11 +217,11 @@ angular.module('miniRouting', ['ui.router']).config(function ($stateProvider, $u
         </ul>
     </div>
 ```
-* So we know that in our controller, $stateParams.id (because of :/id in our router) will be either 'socks' or 'shoes' depending on which page the user is in. With this knowledge, we can add a simple 'if' statement to check which product page the user is on.
-* In your products controller, inject ```$stateParams``` and ```productService``` into your controller. 
-* Now write an if statement, if ```$stateParams.id``` is equal to 'shoes', then ```$scope.productData``` should be set to ```productService.shoeData```. If ```$stateParams.id``` is equal to 'socks', then ```$scope.productData``` should be set to ```productService.sockData```.
-* Now we know that we have data on the scope equal to certain product data, depending on which product the user is looking at.
-* Your productCtrl.js should now look like this: (Note: Please don't just copy and paste. Try to really understand what's going on.)
+<!-- * So we know that in our controller, $stateParams.id (because of :/id in our router) will be either 'socks' or 'shoes' depending on which page the user is in. With this knowledge, we can add a simple 'if' statement to check which product page the user is on. -->
+<!-- * In your products controller, inject ```$stateParams``` and ```productService``` into your controller.  -->
+<!-- * Now write an if statement, if ```$stateParams.id``` is equal to 'shoes', then ```$scope.productData``` should be set to ```productService.shoeData```. If ```$stateParams.id``` is equal to 'socks', then ```$scope.productData``` should be set to ```productService.sockData```. -->
+<!-- * Now we know that we have data on the scope equal to certain product data, depending on which product the user is looking at. -->
+<!-- * Your productCtrl.js should now look like this: (Note: Please don't just copy and paste. Try to really understand what's going on.) -->
 ```javascript
 angular.module('miniRouting').controller('productsCtrl', function ($scope, $stateParams, productService) {
     if ($stateParams.id === 'shoes') {
@@ -232,8 +232,8 @@ angular.module('miniRouting').controller('productsCtrl', function ($scope, $stat
     }
 });
 ```
-* Now that our data is on the $scope of our productCtrl, head over to your productTmpl.html page and loop over $scope.productData and show the type, color, and size of the product.
-* productTmpl.html should now look like this
+<!-- * Now that our data is on the $scope of our productCtrl, head over to your productTmpl.html page and loop over $scope.productData and show the type, color, and size of the product. -->
+<!-- * productTmpl.html should now look like this -->
 ```html
 <h1> Product Page </h1>
 <div ng-repeat="item in productData">
